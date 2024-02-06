@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "GYa/qmxq1VAs/XscTlR6VWNSehX8KsXTrvJp3cDxDkIZ4bJnITVh3wwlRZ2M2kC9v+c+gNzfP2CsAUVzV4hQCQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rafael.bestana\\Documents\\GitHub\\e-commerce-api\\src\\API\\API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rafael.bestana\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\8.0.1\\microsoft.dotnet.ilcompiler.8.0.1.nupkg.sha512",
+    "C:\\Users\\rafael.bestana\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.1\\microsoft.net.illink.tasks.8.0.1.nupkg.sha512",
+    "C:\\Users\\rafael.bestana\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\8.0.1\\runtime.win-x64.microsoft.dotnet.ilcompiler.8.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
