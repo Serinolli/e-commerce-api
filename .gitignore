@@ -1,4 +1,14 @@
-#API
+#vs
+.vs/
 
-src/API/obj/
-src/API/Properties/
+#API
+API/obj/
+API/Properties/
+
+#Data
+Data/obj/
+Data/Properties/
+
+#Domain
+Domain/obj/
+Domain/Properties/
