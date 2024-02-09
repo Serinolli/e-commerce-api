@@ -4,8 +4,8 @@ using API.Controllers;
 namespace API.V1.Controller
 {
     [ApiController]
-    [Route("api/v1/testing")]
-    public abstract class AuthController : APIControllerBase
+    [Route("[controller]")]
+    public abstract class TestController : APIControllerBase
     {
         [HttpGet]
         [Route("/tests")]        
