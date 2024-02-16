@@ -3,12 +3,15 @@
 
 #API
 API/obj/
+API/bin/
 API/Properties/
 
 #Data
 Data/obj/
+Data/bin/
 Data/Properties/
 
 #Domain
 Domain/obj/
+Domain/bin/
 Domain/Properties/
