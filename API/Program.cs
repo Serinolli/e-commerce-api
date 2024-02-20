@@ -6,8 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<Startup>();
 
-builder.Services.AddTransient<Startup>();
-
 var app = builder.Build();
 
 app.UseRouting();
