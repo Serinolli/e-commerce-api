@@ -1,4 +1,5 @@
 using Domain.Models.Commerce; 
+using Domain.Models.Commerce.Enums;
 
 namespace Domain.Models.Commerce {
     public class Product(string name, string description, decimal price, string category, int stock, ProductCondition? condition, string? variationKey) : Entity {
