@@ -1,7 +1,9 @@
 namespace Domain.Models.Commerce {
-    public class CartItem(Product product, int quantity): Entity 
+    public class CartItem: Entity 
     {
-        public Product Product { get; set; } = product;
-        public int Quantity { get; set; } = quantity;
+        public Product? Product { get; set; }
+        public Guid ProductId { get; set; }
+        public int Quantity { get; set; }
+
     }
 }
