@@ -1,8 +1,14 @@
-namespace Domain.Models.Commerce {
-    public class Category(string name, string description): Entity 
+namespace Domain.Models.Commerce 
+{
+    public class Category: Entity 
     {
-        public string Name { get; set; } = name;
-        public string Description { get; set; } = description;
-    }
+        public string Name { get; set; } 
+        public string Description { get; set; }
 
+        public Category(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
+    }
 }
