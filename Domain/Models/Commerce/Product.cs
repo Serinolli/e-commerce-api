@@ -7,10 +7,20 @@ namespace Domain.Models.Commerce
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+        //Todo: change categoria type
         public string Category { get; set; }
         public int Stock { get; set; }
         public ProductCondition Condition { get; set; }
         public string? VariationKey { get; set; }
+
+        public Product()
+        {
+            Name = string.Empty;
+            Description = string.Empty;
+            Price = 0;
+            Category = string.Empty;
+            Condition = ProductCondition.NotInformed;
+        }
 
         public Product(string name, string description, decimal price, string category, int stock, ProductCondition? condition, string? variationKey)
         {
