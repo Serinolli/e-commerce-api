@@ -1,5 +1,7 @@
-﻿using Domain.Interfaces.Repository;
+﻿using Data.Context;
+using Domain.Interfaces.Repository;
 using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,20 @@ namespace Data.Repository
 {
     public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Entity, new()
     {
+        private readonly DbSet<TEntity> dbSet;
+        protected readonly DataContext DbContext;
+
+        protected BaseRepository(DataContext dbContext)
+        {
+            DbContext = dbContext;
+            dbSet = DbContext.Set<TEntity>();
+        }
+        private async Task<int> SaveChanges()
+        {
+            return await DbContext.SaveChangesAsync();
+        }
+
+
         public Task Add(TEntity entity)
         {
             throw new NotImplementedException();
