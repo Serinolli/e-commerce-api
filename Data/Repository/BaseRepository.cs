@@ -25,21 +25,41 @@ namespace Data.Repository
         {
             return await DbContext.SaveChangesAsync();
         }
-
-
-        public Task Add(TEntity entity)
+        protected IQueryable<TEntity> GetQuery(bool includeInactive = false)
         {
-            throw new NotImplementedException();
+            if (includeInactive)
+                return dbSet.AsNoTracking().IgnoreQueryFilters();
+            else
+                return dbSet.AsNoTracking();
         }
 
-        public Task AddList(List<TEntity> entities)
+
+        public async Task Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            dbSet.Add(entity);
+            await SaveChanges();
+        }
+
+        public async Task AddList(List<TEntity> entities)
+        {
+            dbSet.AddRange(entities);
+            await SaveChanges();
+        }
+        public async Task Remove(TEntity entity)
+        {
+            dbSet.Remove(entity);
+            await SaveChanges();
+        }
+
+        public async Task Update(TEntity entity)
+        {
+            dbSet.Update(entity);
+            await SaveChanges();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            DbContext.Dispose();
         }
 
         public Task<PagedList<TEntity>> GetAll(bool includeInactive = false, PaginationParameters? parameters = null)
@@ -47,32 +67,25 @@ namespace Data.Repository
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetById(Guid id)
+        public virtual async Task<TEntity?> GetById(Guid id)
+        {
+            return await dbSet.FindAsync(id);
+        }
+
+        public async Task<TEntity?> GetById(Guid id, params Expression<Func<TEntity, object>>[] includes)
+        {
+            foreach (Expression<Func<TEntity, object>> include in includes)
+                dbSet.Include(include);
+
+            return await dbSet.FindAsync(id);
+        }
+
+        public Task<TEntity?> GetByQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, params Expression<Func<TEntity, object>>[] includes)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetById(Guid id, params Expression<Func<TEntity, object>>[] includes)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TEntity> GetByQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, params Expression<Func<TEntity, object>>[] includes)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<TEntity>> GetByQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy, params Expression<Func<TEntity, object>>[] includes)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Remove(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Update(TEntity entity)
+        public Task<IEnumerable<TEntity?>> GetByQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy, params Expression<Func<TEntity, object>>[] includes)
         {
             throw new NotImplementedException();
         }
