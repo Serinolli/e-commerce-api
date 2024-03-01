@@ -1,5 +1,7 @@
-namespace Domain.Models {
-    public abstract class Entity {
+namespace Domain.Models 
+{
+    public abstract class Entity 
+    {
         public Guid Id { get; set; }
         public bool Active { get; set; }
         public DateTime CreatedAt { get; set; }
