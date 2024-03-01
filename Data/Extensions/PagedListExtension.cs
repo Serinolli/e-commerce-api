@@ -6,24 +6,24 @@ namespace Data.Extensions
     public static class PagedListExtension
     {
 
-        public async static Task<PagedList<T>> ToPagedList<T>(this IQueryable<T> source, int numeroPagina, int tamanhoPagina) where T : Entity
+        public async static Task<PagedList<T>> ToPagedList<T>(this IQueryable<T> source, int actualPage, int pageSize) where T : Entity
         {
-            var registros = await source
-                .Skip((numeroPagina - 1) * tamanhoPagina)
-                .Take(tamanhoPagina)
+            var registers = await source
+                .Skip((actualPage - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
 
-            return new PagedList<T>(registros, numeroPagina, tamanhoPagina);
+            return new PagedList<T>(registers, actualPage, pageSize);
         }
 
-        public async static Task<PagedList<T>> ToPagedListSemEntity<T>(this IQueryable<T> source, int numeroPagina, int tamanhoPagina)
+        public async static Task<PagedList<T>> ToPagedListSemEntity<T>(this IQueryable<T> source, int actualPage, int pageSize)
         {
-            var registros = await source
-                .Skip((numeroPagina - 1) * tamanhoPagina)
-                .Take(tamanhoPagina)
+            var registers = await source
+                .Skip((actualPage - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
 
-            return new PagedList<T>(registros, numeroPagina, tamanhoPagina);
+            return new PagedList<T>(registers, actualPage, pageSize);
         }
   
     }
