@@ -80,9 +80,14 @@ namespace Data.Repository
             return await dbSet.FindAsync(id);
         }
 
-        public Task<TEntity?> GetByQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, params Expression<Func<TEntity, object>>[] includes)
+        public async Task<TEntity?> GetByQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, params Expression<Func<TEntity, object>>[] includes)
         {
-            throw new NotImplementedException();
+            var query = this.GetQuery(includeInactive);
+
+            foreach (Expression<Func<TEntity, object>> include in includes)
+                query = query.Include(include);
+
+            return await query.FirstOrDefaultAsync(condition);
         }
 
         public Task<IEnumerable<TEntity?>> GetByQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy, params Expression<Func<TEntity, object>>[] includes)
