@@ -25,6 +25,7 @@ namespace Data.Repository
         {
             return await DbContext.SaveChangesAsync();
         }
+        #region Query Methods
         protected IQueryable<TEntity> GetQuery(bool includeInactive = false)
         {
             if (includeInactive)
@@ -32,6 +33,22 @@ namespace Data.Repository
             else
                 return dbSet.AsNoTracking();
         }
+        private IQueryable<TEntity> GetSearchQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy, params Expression<Func<TEntity, object>>[] includes)
+        {
+            var query = this.GetQuery(includeInactive);
+
+            foreach (var include in includes)
+                query = query.Include(include);
+
+            if (condition != null)
+                query = query.Where(condition);
+
+            if (orderBy != null)
+                query = orderBy(query);
+
+            return query;
+        }
+        #endregion
 
 
         public async Task Add(TEntity entity)
@@ -90,9 +107,11 @@ namespace Data.Repository
             return await query.FirstOrDefaultAsync(condition);
         }
 
-        public Task<IEnumerable<TEntity?>> GetByQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy, params Expression<Func<TEntity, object>>[] includes)
+        public async Task<IEnumerable<TEntity?>> GetByQuery(bool includeInactive, Expression<Func<TEntity, bool>> condition, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy, params Expression<Func<TEntity, object>>[] includes)
         {
-            throw new NotImplementedException();
+            var query = this.GetSearchQuery(includeInactive, condition, orderBy, includes);
+
+            return await query.ToListAsync();
         }
     }
 }
