@@ -1,4 +1,6 @@
-﻿using Domain.Models.Commerce;
+﻿using Data.Context;
+using Domain.Interfaces.Repository.Commerce;
+using Domain.Models.Commerce;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace Data.Repository.Commerce
 {
-    public class CategoryRepository : BaseRepository<Category>
+    public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
+        public CategoryRepository(DataContext context): base(context) { }
 
     }
 }
