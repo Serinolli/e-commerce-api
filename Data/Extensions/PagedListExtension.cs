@@ -16,7 +16,7 @@ namespace Data.Extensions
             return new PagedList<T>(registers, actualPage, pageSize);
         }
 
-        public async static Task<PagedList<T>> ToPagedListSemEntity<T>(this IQueryable<T> source, int actualPage, int pageSize)
+        public async static Task<PagedList<T>> ToPagedListWithoutEntity<T>(this IQueryable<T> source, int actualPage, int pageSize)
         {
             var registers = await source
                 .Skip((actualPage - 1) * pageSize)
