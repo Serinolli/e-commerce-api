@@ -12,20 +12,5 @@ namespace API.Controllers
         {
             _context = context;
         }
-
-        protected async Task BeginTransaction()
-        {
-            _transaction = await _context.Database.BeginTransactionAsync();
-        }
-
-        protected async Task CommitTransaction()
-        {
-            await _transaction?.CommitAsync();
-        }
-
-        protected async Task ReverterTransacao()
-        {
-            await _transaction?.RollbackAsync();
-        }
     }
 }
