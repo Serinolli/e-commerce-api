@@ -1,4 +1,5 @@
 ﻿using Data.Context;
+using Domain.Interfaces.Repository.Commerce;
 using Microsoft.AspNetCore.Mvc; // Assuming your DataContext resides in this namespace
 
 namespace API.Controllers.V1.Commerce
@@ -7,10 +8,15 @@ namespace API.Controllers.V1.Commerce
     [ApiController]
     public class CategoryController : ControllerBaseAPI
     {
-
-        public CategoryController(DataContext context) : base(context)
+        #region Properties
+        private readonly ICategoryRepository _categoryRepository;
+        #endregion
+        public CategoryController(
+            DataContext context,
+            ICategoryRepository categoryRepository
+            ) : base(context)
         {
-
+            _categoryRepository = categoryRepository;
         }
     }
 }
