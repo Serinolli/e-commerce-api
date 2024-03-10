@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Mvc; // Assuming your DataContext resides in this nam
 
 namespace API.Controllers.V1.Commerce
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBaseAPI
     {
+
         public CategoryController(DataContext context) : base(context)
         {
 

@@ -13,5 +13,13 @@ namespace Data.Repository.Commerce
     {
         public CategoryRepository(DataContext context): base(context) { }
 
+        public Task<Category?> GetByName(string name)
+        {
+            return Task.FromResult(
+                    this.GetQuery()
+                        .SingleOrDefault(u => u.Name.Equals(name))
+                );
+        }
+
     }
 }
