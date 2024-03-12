@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using API.Configuration;
 
 namespace API   
 {
@@ -34,7 +35,9 @@ namespace API
 
             services.AddControllers();
             services.AddAuthorization();
+            services.ResolveDependencies();
         }
+        
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
