@@ -1,4 +1,8 @@
-﻿namespace API.Configuration
+﻿using Data.Context;
+using Data.Repository.Commerce;
+using Domain.Interfaces.Repository.Commerce;
+
+namespace API.Configuration
 {
     public static class DependencyInjectionConfig
     {
@@ -7,6 +11,8 @@
             )
         {
             //services.AddScoped<IRepository, Repository>;
+            services.AddScoped<DataContext>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             return services;
         }
     }
