@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.Service.Commerce
 {
-    public class ICategoryService
+    public interface ICategoryService
     {
     }
 }

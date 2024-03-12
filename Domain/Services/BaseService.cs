@@ -16,7 +16,7 @@ namespace Domain.Services
         #endregion
 
         #region Constructors
-        public BaseService(DbContext context) 
+        public BaseService(DataContext context) 
         {
             _context = context;
         }
