@@ -5,7 +5,7 @@ namespace Domain.Services.Commerce
 {
     public class CategoryService : BaseService, ICategoryService
     {
-        public CategoryService(DataContext context): base(context)
+        public CategoryService(DataContext context) : base(context)
         {
 
         }
