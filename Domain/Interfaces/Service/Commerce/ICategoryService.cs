@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models.Commerce;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Domain.Interfaces.Service.Commerce
 {
     public interface ICategoryService
     {
+        public Task Create(Category category);
     }
 }

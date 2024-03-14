@@ -1,5 +1,6 @@
 ﻿using Data.Context;
 using Domain.Interfaces.Repository.Commerce;
+using Domain.Interfaces.Service.Commerce;
 using Domain.Models.Commerce;
 using Microsoft.AspNetCore.Mvc; // Assuming your DataContext resides in this namespace
 
@@ -10,20 +11,20 @@ namespace API.Controllers.V1.Commerce
     public class CategoryController : ControllerBaseAPI
     {
         #region Properties
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryService _categoryService;
         #endregion
         public CategoryController(
             DataContext context,
-            ICategoryRepository categoryRepository
+            ICategoryService categoryService
             ) : base(context)
         {
-            _categoryRepository = categoryRepository;
+            _categoryService = categoryService;
         }
 
-        [HttpGet]
-        public async Task<Category> GetCategory()
+        [HttpPost]
+        public Task CreateCategory([FromBody] Category category)
         {
-            return await _categoryRepository.GetByName("Teste");
+            return _categoryService.Create(category);
         }
     }
 }
