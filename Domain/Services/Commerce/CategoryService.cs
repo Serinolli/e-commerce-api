@@ -1,14 +1,13 @@
-﻿using Data.Context;
-using Domain.Interfaces.Repository.Commerce;
+﻿using Domain.Interfaces.Repository.Commerce;
 using Domain.Interfaces.Service.Commerce;
 using Domain.Models.Commerce;
 
 namespace Domain.Services.Commerce
 {
-    public class CategoryService : BaseService, ICategoryService
+    public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
-        public CategoryService(DataContext context, ICategoryRepository categoryRepository) : base(context) 
+        public CategoryService(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
