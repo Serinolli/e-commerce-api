@@ -26,5 +26,11 @@ namespace API.Controllers.V1.Commerce
         {
             return _categoryService.Create(category);
         }
+
+        [HttpGet]
+        public Task GetCategories()
+        {
+            return _categoryService.GetAll();
+        }
     }
 }
