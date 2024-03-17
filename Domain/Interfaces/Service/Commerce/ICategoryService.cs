@@ -11,6 +11,7 @@ namespace Domain.Interfaces.Service.Commerce
     public interface ICategoryService
     {
         public Task Create(Category category);
+        public Task Update(Category category);
         public Task<PagedList<Category>> GetAll();
     }
 }

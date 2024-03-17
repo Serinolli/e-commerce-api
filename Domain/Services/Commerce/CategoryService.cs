@@ -17,6 +17,10 @@ namespace Domain.Services.Commerce
         {
             return _categoryRepository.Add(category);
         }
+        public Task Update(Category category)
+        {
+            return _categoryRepository.Update(category);
+        }
 
         public Task<PagedList<Category>> GetAll()
         {

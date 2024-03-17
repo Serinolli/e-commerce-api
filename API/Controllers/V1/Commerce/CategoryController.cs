@@ -28,6 +28,12 @@ namespace API.Controllers.V1.Commerce
             return _categoryService.Create(category);
         }
 
+        [HttpPut]
+        public Task UpdateCategory([FromBody] Category category)
+        {
+            return _categoryService.Update(category);
+        }
+
         [HttpGet]
         public async Task<PagedList<Category>> GetCategories()
         {
