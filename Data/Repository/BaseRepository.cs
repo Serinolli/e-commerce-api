@@ -1,4 +1,5 @@
 ﻿using Data.Context;
+using Data.Extensions;
 using Domain.Interfaces.Repository;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -79,9 +80,10 @@ namespace Data.Repository
             DbContext.Dispose();
         }
 
-        public Task<PagedList<TEntity>> GetAll(bool includeInactive = false, PaginationParameters? parameters = null)
+        public async Task<PagedList<TEntity>> GetAll(bool includeInactive = false, PaginationParameters? parameters = null)
         {
-            throw new NotImplementedException();
+            return await this.GetQuery(includeInactive)
+                .ToPagedList(parameters?.CurrentPage ?? 1, parameters?.PageSize ?? 20);
         }
 
         public virtual async Task<TEntity?> GetById(Guid id)
