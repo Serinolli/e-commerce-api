@@ -19,6 +19,7 @@ namespace Domain.Services.Commerce
         }
         public Task Update(Category category)
         {
+            category.LastUpdate = DateTime.Now;
             return _categoryRepository.Update(category);
         }
 
