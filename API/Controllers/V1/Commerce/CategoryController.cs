@@ -1,6 +1,7 @@
 ﻿using Data.Context;
 using Domain.Interfaces.Repository.Commerce;
 using Domain.Interfaces.Service.Commerce;
+using Domain.Models;
 using Domain.Models.Commerce;
 using Microsoft.AspNetCore.Mvc; // Assuming your DataContext resides in this namespace
 
@@ -28,9 +29,9 @@ namespace API.Controllers.V1.Commerce
         }
 
         [HttpGet]
-        public Task GetCategories()
+        public async Task<PagedList<Category>> GetCategories()
         {
-            return _categoryService.GetAll();
+            return await _categoryService.GetAll();
         }
     }
 }
