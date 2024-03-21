@@ -16,7 +16,7 @@ namespace Data.Repository.Commerce
         public Task<Category?> GetByName(string name)
         {
             return Task.FromResult(
-                    this.GetQuery()
+                    GetQuery()
                         .SingleOrDefault(u => u.Name.Equals(name))
                 );
         }
