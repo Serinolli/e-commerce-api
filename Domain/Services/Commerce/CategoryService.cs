@@ -27,5 +27,9 @@ namespace Domain.Services.Commerce
         {
             return _categoryRepository.GetAll();
         }
+        public Task<Category?> GetByName(string name)
+        {
+            return _categoryRepository.GetByName(name);
+        }
     }
 }
