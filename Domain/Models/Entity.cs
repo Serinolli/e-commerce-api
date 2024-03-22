@@ -10,6 +10,8 @@ namespace Domain.Models
         protected Entity() 
         {
             Active = true; 
+            CreatedAt = DateTime.Now;
+            LastUpdate = DateTime.Now;
         }
     }
 }
