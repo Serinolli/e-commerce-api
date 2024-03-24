@@ -3,3 +3,4 @@ Using the context of an RESTful API for e-commerce to learn and practice some ba
 
 ### Working on ⌛
 Starting authentication  
+Improving modeling
