@@ -1,6 +1,6 @@
 ﻿namespace API.Configuration
 {
-    public class AuthConfiguration
+    public class AuthenticationConfig
     {
     }
 }
