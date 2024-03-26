@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using API.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace API   
 {
@@ -34,6 +35,18 @@ namespace API
             });
 
             services.AddControllers();
+            services.AddAuthentication(s =>
+            {
+                s.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                s.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                s.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(j =>
+            {
+                j.TokenValidationParameters = new()
+                {
+
+                };
+            });
             services.AddAuthorization();
             services.ResolveDependencies();
         }
